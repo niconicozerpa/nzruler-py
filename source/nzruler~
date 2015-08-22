@@ -32,29 +32,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 '''
 
 import sys
-from pkgutil import iter_modules
 
-def moduleExists(module_name):
-    return module_name in (name for loader, name, ispkg in iter_modules())
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
-qt5Available = moduleExists("PyQt5")
-if qt5Available:
-	from PyQt5.QtCore import *
-	from PyQt5.QtGui import *
-	from PyQt5.QtWidgets import *
-else:
-	qt4Available = moduleExists("PyQt4")
-	if qt4Available:
-		from PyQt4.QtCore import *
-		from PyQt4.QtGui import *
-	else:
-		print("This application requires PyQt version 4 or 5.", file=sys.stderr)
-		sys.exit(1)
-
-
-
-
-class NZRuler(QMainWindow):
+class Regla(QMainWindow):
 	_yellow = QColor(255, 255, 128, 255)
 	_black = QColor(0, 0, 0, 255)
 	_blue = QColor(0, 0, 170, 255)
@@ -293,7 +276,7 @@ class NZRuler(QMainWindow):
 			pnt.drawStaticText(posX, posY, label)
 
 app = QApplication(sys.argv)  
-MainWindow = NZRuler(parent=None, flags=Qt.FramelessWindowHint)
+MainWindow = Regla(parent=None, flags=Qt.FramelessWindowHint)
 
 MainWindow.show()
 sys.exit(app.exec_())
