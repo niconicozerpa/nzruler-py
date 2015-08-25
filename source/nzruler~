@@ -42,11 +42,13 @@ if qt5Available:
 	from PyQt5.QtCore import *
 	from PyQt5.QtGui import *
 	from PyQt5.QtWidgets import *
+	print("pyqt5")
 else:
 	qt4Available = moduleExists("PyQt4")
 	if qt4Available:
 		from PyQt4.QtCore import *
 		from PyQt4.QtGui import *
+		print("pyqt4")
 	else:
 		sys.stderr.write("This application requires PyQt version 4 or 5.\n")
 		sys.exit(1)
